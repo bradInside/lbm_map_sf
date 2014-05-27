@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{% block title %}Lbm - Map{% endblock%}</title>
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGG4I3T2v57X_wMOt4iHbS-vzVbRzy5uQ&sensor=false">
+    </script>
+    {% block javascripts %}
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="js/jquery-ui-1.10.4.custom.js"></script>
+        <script type="text/javascript" src="js/lbm.js"></script>
+        <script type="text/javascript" src="js/lbmMap.js"></script>
+    {% endblock %}
+
+    {% block stylesheets %}
+        <link href="css/lbm/jquery-ui-1.10.4.custom.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/lbmMap.css">
+    {% endblock %}
+</head>
+<body>
+
+<div id='bandeau'>
+    {% block bandeau %}
+    <img src='http://i57.servimg.com/u/f57/12/16/01/30/tetier18.jpg' />
+    {% block bandeau %}
+</div>
+
+{%  block mapContainer %}
+<div id='mapbody'>
+    <div id='volet_lbm'>
+        <div id='volet_body'>
+            <div id="tabs">
+                <ul>
+                    <li><a href="#tabs-addMember">Ajouter</a></li>
+                    <li><a href="#tabs-search">Rechercher</a></li>
+                </ul>
+                <div id="tabs-addMember">
+                    <button id='btn_add_Member'>Ajouter ma position</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="map_canvas"/>
+</div>
+{% endblock  %}
+{% block body_content %}
+{% endblock %}
+{%  block popups_html %}
+    <div style="display:none">
+        <div id='add_member_instructions' title="Ajouter ma localisation">
+            <p>Cliquez sur la carte pour ajouter votre localisation.</p>
+            <p>Vous pouvez utiliser la molette de votre souris pour zoomer ou maitnenir le clic pour vous déplacer sur la carte.</p>
+        </div>
+        <div id='add_member_form_container' title="Ajouter ma localisation">
+            <form id='add_member_form'
+            <p>Merci d'indiquer les informations suivantes:</p>
+            <label for"pseudo">pseudo lbm </label>&nbsp;<input id="pseudo" type="text" name="pseudo" />
+            <input type="hidden" name="lat" />
+            <input type="hidden" name ="lng" />
+            <input type="hidden" name ="action" value="add_member"/>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+</body>
+</html>
