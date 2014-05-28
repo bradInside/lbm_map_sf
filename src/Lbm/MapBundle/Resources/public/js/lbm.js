@@ -4,6 +4,8 @@ var geocoder;
 var marker;
 var infowindow;
 
+var array_infowindow =[];
+
 $(document).ready(function () {
     map = setMap();
     setStyle();
@@ -41,6 +43,12 @@ function setMap() {
 function addListeners() {
     $('#btn_add_Member').click(function () {
         setListenerToAddMember();
+    });
+    $('#btn_close_infowindows').click(function() {
+        var lg = array_infowindow.length;
+        for (i=0;i<lg;i++) {
+            array_infowindow[i].close();
+        }
     });
 }
 
@@ -139,12 +147,28 @@ function addMarker(member) {
     marker.lbmId = member.id;
     google.maps.event.addListener(marker, 'click', function () {
         map.setCenter(marker.getPosition());
+        smoothZoom(map, 14, map.getZoom());
         marker.infowindow.open(map,marker);
     });
     infowindow = new google.maps.InfoWindow({
         content: '<div id="content"><b>'+member.pseudo+'</b></div>'
     });
+    array_infowindow.push(infowindow);
     marker.infowindow = infowindow;
     infowindow.open(map,marker);
     return marker;
+}
+
+// the smooth zoom function
+function smoothZoom (map, max, cnt) {
+    if (cnt >= max) {
+        return;
+    }
+    else {
+        z = google.maps.event.addListener(map, 'zoom_changed', function(event){
+            google.maps.event.removeListener(z);
+            smoothZoom(map, max, cnt + 1);
+        });
+        setTimeout(function(){map.setZoom(cnt)}, 80); // 80ms is what I found to work well on my system -- it might not work well on all systems
+    }
 }
