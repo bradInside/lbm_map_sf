@@ -53,8 +53,10 @@ class Member
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="creationDate", type="datetime")
      * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(name="creationDate", type="datetime")
+     *
+     *
      */
     private $creationDate;
 
