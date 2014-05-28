@@ -1,0 +1,5 @@
+map:
+    resource: "@MapBundle/Controller/"
+    type:     annotation
+    prefix:   /
+

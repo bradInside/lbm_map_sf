@@ -8,14 +8,14 @@
     </script>
     {% block javascripts %}
         <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-        <script src="js/jquery-ui-1.10.4.custom.js"></script>
-        <script type="text/javascript" src="js/lbm.js"></script>
-        <script type="text/javascript" src="js/lbmMap.js"></script>
+        <script src="{{ asset('bundles/map/js/jquery-ui-1.10.4.custom.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/map/js/lbm.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/map/js/lbmMap.js') }}"></script>
     {% endblock %}
 
     {% block stylesheets %}
-        <link href="css/lbm/jquery-ui-1.10.4.custom.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="css/lbmMap.css">
+        <link href="{{ asset('bundles/map/css/lbm/jquery-ui-1.10.4.custom.css') }}" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{  asset('bundles/map/css/lbmMap.css') }}">
     {% endblock %}
 </head>
 <body>
@@ -23,7 +23,7 @@
 <div id='bandeau'>
     {% block bandeau %}
     <img src='http://i57.servimg.com/u/f57/12/16/01/30/tetier18.jpg' />
-    {% block bandeau %}
+    {% endblock %}
 </div>
 
 {%  block mapContainer %}
@@ -54,12 +54,11 @@
             <p>Vous pouvez utiliser la molette de votre souris pour zoomer ou maitnenir le clic pour vous déplacer sur la carte.</p>
         </div>
         <div id='add_member_form_container' title="Ajouter ma localisation">
-            <form id='add_member_form'
+            <form id='add_member_form'>
             <p>Merci d'indiquer les informations suivantes:</p>
             <label for"pseudo">pseudo lbm </label>&nbsp;<input id="pseudo" type="text" name="pseudo" />
             <input type="hidden" name="lat" />
             <input type="hidden" name ="lng" />
-            <input type="hidden" name ="action" value="add_member"/>
             </form>
         </div>
     </div>

@@ -3,6 +3,7 @@
 namespace Lbm\MapBundle\Entity\Member;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Member
@@ -53,6 +54,7 @@ class Member
      * @var \DateTime
      *
      * @ORM\Column(name="creationDate", type="datetime")
+     * @Gedmo\Timestampable(on="create")
      */
     private $creationDate;
 

@@ -14,6 +14,7 @@ class MapController extends Controller
      */
     public function openAction()
     {
+        return array('test'=>'test');
     }
 
 }
