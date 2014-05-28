@@ -3,7 +3,6 @@
 namespace Lbm\MapBundle\Entity\Member;
 
 use Doctrine\ORM\EntityRepository;
-
 /**
  * MemberRepository
  *
@@ -12,4 +11,16 @@ use Doctrine\ORM\EntityRepository;
  */
 class MemberRepository extends EntityRepository
 {
+    public function isPseudoAlreadyExist( $pseudo,  $ip) {
+        $query = $this->_em->createQuery(
+            "SELECT COUNT(m) as mbr FROM Lbm\\MapBundle\\Entity\\Member\\Member as m WHERE (m.ip LIKE :ip OR m.pseudo LIKE :pseudo) AND m.ip != '127.0.0.1'"
+        )->setParameter('ip',$ip)
+         ->setParameter('pseudo',$pseudo);
+
+        $result = $query->getSingleScalarResult();
+
+        return  $result > 0;
+    }
+
+
 }
