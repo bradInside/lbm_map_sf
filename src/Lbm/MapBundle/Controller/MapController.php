@@ -14,7 +14,13 @@ class MapController extends Controller
      */
     public function openAction()
     {
-        return array('test'=>'test');
+        //getting all members
+        $memberRepo = $this->getDoctrine()->getRepository('MapBundle:Member\Member');
+        $queryMembers = $memberRepo->getPartialMembersQuery();
+
+        $members = $queryMembers->getResult();
+       // var_dump($members);
+        return array('members'=>$members);
     }
 
 }

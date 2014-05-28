@@ -22,5 +22,12 @@ class MemberRepository extends EntityRepository
         return  $result > 0;
     }
 
+    public function getPartialMembersQuery(){
+        $qb = $this->createQueryBuilder('m')->select('m.id,m.pseudo,m.lat,m.lng');
+
+        $query = $qb->getQuery();
+        return $query;
+    }
+
 
 }

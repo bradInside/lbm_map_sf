@@ -2,3 +2,11 @@
 
 
 
+{% block  javascripts %}
+
+    <script type="text/javascript">
+        var lbm_members = {{ members|json_encode()|raw }};
+        var markerImageUrl = "{{ asset('bundles/Map/images/marker_lbm.png') }}";
+    </script>
+    {{ parent() }}
+{% endblock %}

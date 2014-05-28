@@ -2,11 +2,13 @@ var map;
 var bounds;
 var geocoder;
 var marker;
+var infowindow;
 
 $(document).ready(function () {
     map = setMap();
     setStyle();
     addListeners();
+    buildBaseMarkers();
 });
 
 
@@ -82,7 +84,7 @@ function placeMarker(location) {
                 },
                 "Valider": function () {
                     addMemberFormValidation($(this));
-                },
+                }
             }
         });
     }, 500);
@@ -110,23 +112,39 @@ function addMemberFormValidation($form) {
             }
         });
 }
-/*
-function addMarker(lat, lng, id) {
-    var myLatLng = new google.maps.LatLng(lat, lng);
+
+function buildBaseMarkers(){
+    console.log('start building marker');
+    if(lbm_members != null ) {
+       var lg = lbm_members.length;
+       for(i=0;i<lg;i++) {
+           var member = lbm_members[i];
+           var gmapMarker =  addMarker(member);
+           member['gmap'] = gmapMarker;
+       }
+    }
+}
+
+function addMarker(member) {
+    console.log('adding marker');
+    var myLatLng = new google.maps.LatLng(member.lat, member.lng);
     bounds.extend(myLatLng);
     var marker = new google.maps.Marker({
         map: map,
         position: myLatLng,
-        icon: 'img/map/moreno_marker.png'
+        icon: markerImageUrl,
+        title: member.pseudo,
+        labelContent: member.pseudo,
     });
-    marker.morenoid = id;
-    salons_markers.push(marker);
-
+    marker.lbmId = member.id;
     google.maps.event.addListener(marker, 'click', function () {
-        map.setZoom(14);
         map.setCenter(marker.getPosition());
-        var id = marker.morenoid;
-        makeSalonSelection(id);
+        marker.infowindow.open(map,marker);
     });
+    infowindow = new google.maps.InfoWindow({
+        content: '<div id="content"><b>'+member.pseudo+'</b></div>'
+    });
+    marker.infowindow = infowindow;
+    infowindow.open(map,marker);
+    return marker;
 }
-*/

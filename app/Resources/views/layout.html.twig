@@ -10,10 +10,12 @@
         <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
         <script src="{{ asset('bundles/map/js/jquery-ui-1.10.4.custom.js') }}"></script>
         <script type="text/javascript" src="{{ asset('bundles/map/js/lbm.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('bundles/map/js/lbmMap.js') }}"></script>
+       {# <script type="text/javascript" src="{{ asset('bundles/map/js/lbmMap.js') }}"></script>#}
     {% endblock %}
 
     {% block stylesheets %}
+        <link rel="shortcut icon" href="{{ asset('bundles/map/images/favicon.ico') }}" type="image/x-icon">
+        <link rel="icon" href="{{ asset('bundles/map/images/favicon.ico') }}" type="image/x-icon">
         <link href="{{ asset('bundles/map/css/lbm/jquery-ui-1.10.4.custom.css') }}" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{{  asset('bundles/map/css/lbmMap.css') }}">
     {% endblock %}
