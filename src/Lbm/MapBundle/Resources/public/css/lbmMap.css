@@ -50,3 +50,13 @@
 	background-color: black;
 	background-image: none;
 }
+
+ .search_list{
+    list-style: none;
+ }
+
+ .search_list li{
+    display: block;
+    padding: 5px;
+     border: 1px solid white
+ }

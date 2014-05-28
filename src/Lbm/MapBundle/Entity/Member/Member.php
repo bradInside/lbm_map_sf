@@ -185,4 +185,9 @@ class Member
     {
         return $this->creationDate;
     }
+
+    public function toArray(){
+        $arr = array('id'=>$this->getId(),'pseudo'=>$this->getPseudo(),'lat'=>$this->getLat(),'lng'=>$this->getLng());
+        return $arr;
+    }
 }

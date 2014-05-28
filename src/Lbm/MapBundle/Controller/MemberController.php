@@ -23,7 +23,7 @@ class MemberController extends Controller
                     ->getDoctrine()
                     ->getRepository('MapBundle:Member\Member');
                 if($memberRepository->isPseudoAlreadyExist($request->get('pseudo'),$request->getClientIp())) {
-                    $data = array('result'=>'error','Message'=>"Le pseudo existe déjà ou vous avez déjà ajouté votre position");
+                    $data = array('result'=>'error','message'=>"Le pseudo existe déjà ou vous avez déjà ajouté votre position");
                 }else {
                     $member = new Member();
                     $member->setPseudo($request->get('pseudo'));
@@ -35,7 +35,8 @@ class MemberController extends Controller
                     $em->persist($member);
                     $em->flush();
 
-                    $data = array('result'=>'success');
+
+                    $data = array('result'=>'success','member'=>$member->toArray());
                 }
 
                 $response = new \Symfony\Component\HttpFoundation\Response(json_encode($data));

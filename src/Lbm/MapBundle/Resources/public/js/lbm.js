@@ -5,7 +5,7 @@ var marker;
 var infowindow;
 
 var array_infowindow =[];
-
+var test;
 $(document).ready(function () {
     map = setMap();
     setStyle();
@@ -64,9 +64,7 @@ function setListenerToAddMember() {
     });
     google.maps.event.addListener(map, 'click', function (event) {
         placeMarker(event.latLng);
-        console.log(event.latLng);
-        console.log(event.latLng.lat());
-        console.log(event.latLng.lng());
+
     });
 }
 
@@ -115,10 +113,20 @@ function addMemberFormValidation($form) {
         dataType: "json"
 
     }).done(function (data) {
-            if (console && console.log) {
-                console.log("Sample of data:", data.slice(0, 100));
+            test = data.member;
+            console.log(data);
+            if(data.result == 'success' ){
+                $('#add_member_form_container').dialog('close');
+                member = data.member;
+                lbm_members.push(member);
+                addMarker(member);
+                marker.setMap(null);
+                $('body').toastmessage('showSuccessToast', "Ajout réussi");
+            }else {
+                $('body').toastmessage('showErrorToast', data.message);
             }
         });
+
 }
 
 function buildBaseMarkers(){
@@ -134,7 +142,6 @@ function buildBaseMarkers(){
 }
 
 function addMarker(member) {
-    console.log('adding marker');
     var myLatLng = new google.maps.LatLng(member.lat, member.lng);
     bounds.extend(myLatLng);
     var marker = new google.maps.Marker({

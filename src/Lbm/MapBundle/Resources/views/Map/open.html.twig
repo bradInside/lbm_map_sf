@@ -10,3 +10,12 @@
     </script>
     {{ parent() }}
 {% endblock %}
+
+{% block search %}
+    <input type="text" name="search"/>
+    <ul class="search_list">
+       {% for m in members %}
+           <li>{{ m.pseudo }}</li>
+       {% endfor %}
+    </ul>
+{% endblock %}
