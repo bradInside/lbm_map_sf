@@ -7,15 +7,42 @@
     <script type="text/javascript">
         var lbm_members = {{ members|json_encode()|raw }};
         var markerImageUrl = "{{ asset('bundles/Map/images/marker_lbm.png') }}";
+
     </script>
     {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/map/js/lbm.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/map/js/chosen.jquery.min.js')}}"></script>
+    <script type="text/javascript">
+
+
+
+        $('document').ready(function() {
+                $('#search_list').chosen({width: "95%"}).change(function(){
+                    zoomOnMarker($(this).val());
+                });
+            $('#map_rayon').chosen({width: "120px"}).change(function(){
+                    zoomOnMarker($(this).val());
+                });
+
+
+        });
+    </script>
 {% endblock %}
 
+{%  block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{  asset('bundles/map/css/chosen/chosen.css') }}">
+{% endblock   %}
+
 {% block search %}
-    <input type="text" name="search"/>
-    <ul class="search_list">
-       {% for m in members %}
-           <li>{{ m.pseudo }}</li>
+    <h4>Rechercher par pseudo</h4>
+    <select id="search_list" data-placeholder="Rechercher un membre" class="chosen-select">
+            <option value=""></option>
+           {% for m in members %}
+           <option value="{{ m.id }}">{{ m.pseudo }}</option>
        {% endfor %}
-    </ul>
+    </select>
+    <h4>Rechercher par localité</h4>
+    <input id="map_adress_input" type="text" data-placeholder="Entrez une adresse">
+
 {% endblock %}

@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>{% block title %}Lbm - Map{% endblock%}</title>
     <script type="text/javascript"
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGG4I3T2v57X_wMOt4iHbS-vzVbRzy5uQ&sensor=false">
+            src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCGG4I3T2v57X_wMOt4iHbS-vzVbRzy5uQ&sensor=false">
     </script>
     {% block javascripts %}
         <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -17,7 +17,7 @@
     {% block stylesheets %}
         <link rel="shortcut icon" href="{{ asset('bundles/map/images/favicon.ico') }}" type="image/x-icon">
         <link rel="icon" href="{{ asset('bundles/map/images/favicon.ico') }}" type="image/x-icon">
-        <link href="{{ asset('bundles/map/css/lbm/jquery-ui-1.10.4.custom.css') }}" rel="stylesheet">
+        <link href="{{ asset('bundles/map/css/smoothness/jquery-ui-1.10.4.custom.css') }}" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{{  asset('bundles/map/css/jquery.toastmessage.css') }}">
         <link rel="stylesheet" type="text/css" href="{{  asset('bundles/map/css/lbmMap.css') }}">
     {% endblock %}

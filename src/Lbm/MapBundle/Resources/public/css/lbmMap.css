@@ -1,5 +1,5 @@
  html { height: 100% }
- body { height: 100%; margin: 0; padding: 0; font-family: Verdana; font-size:8px;}
+ body { height: 100%; margin: 0; padding: 0; font-family: Verdana; font-size:10px;}
 
  #map-canvas { height: 100% }
  #bandeau {
@@ -30,7 +30,7 @@
  }
 
  #volet_lbm {
- 	width: 250px;
+ 	width: 280px;
 
  	position: absolute;
  	z-index:5;
@@ -47,8 +47,6 @@
 }
 
 .ui-widget-content {
-	background-color: black;
-	background-image: none;
 }
 
  .search_list{
@@ -59,4 +57,13 @@
     display: block;
     padding: 5px;
      border: 1px solid white
+ }
+
+ .infowindow_content
+ {
+     min-width: 100px;
+ }
+
+ #map_adress_input{
+     width:90%;
  }
