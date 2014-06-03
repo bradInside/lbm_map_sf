@@ -1,5 +1,8 @@
-Symfony Standard Edition
+Carte de localisation des membres LBM
 ========================
+
+Le projet est un projet symfony vous trouverez ci dessous la procédure d'installation de symfony.
+
 
 Welcome to the Symfony Standard Edition - a fully-functional Symfony2
 application that you can use as the skeleton for your new applications.
