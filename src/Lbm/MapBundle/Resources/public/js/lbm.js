@@ -74,7 +74,6 @@ function setListenerToAddMember() {
 
 function placeMarker(location) {
     if (marker) {
-
         marker.setPosition(location);
     } else {
         marker = new google.maps.Marker({
@@ -117,8 +116,6 @@ function addMemberFormValidation($form) {
         dataType: "json"
 
     }).done(function (data) {
-            test = data.member;
-            console.log(data);
             if(data.result == 'success' ){
                 $('#add_member_form_container').dialog('close');
                 member = data.member;
