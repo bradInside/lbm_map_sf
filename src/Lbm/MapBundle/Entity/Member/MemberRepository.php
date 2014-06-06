@@ -23,7 +23,7 @@ class MemberRepository extends EntityRepository
     }
 
     public function getPartialMembersQuery(){
-        $qb = $this->createQueryBuilder('m')->select('m.id,m.pseudo,m.lat,m.lng');
+        $qb = $this->createQueryBuilder('m')->select('m.id,m.pseudo,m.lat,m.lng')->orderBy('m.pseudo');
 
         $query = $qb->getQuery();
         return $query;
