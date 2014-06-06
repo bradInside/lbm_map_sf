@@ -19,8 +19,9 @@ class MapController extends Controller
         $queryMembers = $memberRepo->getPartialMembersQuery();
 
         $members = $queryMembers->getResult();
-       // var_dump($members);
-        return array('members'=>$members);
+
+        $integrated = $this->getRequest()->query->get('integrated');
+        return array('members'=>$members,'integrated'=>$integrated);
     }
 
 }
